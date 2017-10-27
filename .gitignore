@@ -1,0 +1,13 @@
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# dependencies
+node_modules
+
+# testing
+coverage
+
+# misc
+.DS_Store
+npm-debug.log

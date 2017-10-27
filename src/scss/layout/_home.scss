@@ -1,0 +1,61 @@
+.hero {
+  .hero-body {
+    background-image: url(../img/hero-img.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    text-align: center;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .hero-title {
+      color: $primary;
+      font-size: $font-title;
+      > span {
+        font-weight: 900;
+        font-size: 3rem;
+        @media (max-width: 767px) {
+          font-size: $font-body;
+        }
+      }
+    }
+  }
+}
+.banner {
+  background-color: $primary;
+  text-align: center;
+  color: white;
+  &__copy {
+    padding: 1.5em;
+    font-size: $font-body
+  }
+}
+.cards {
+  padding: 50px 0;
+  .columns{
+    .card {
+      margin: 0 20px;
+      &__content {
+        text-align: center;
+        }
+      &__title {
+        font-size: $font-title;
+        padding-top: 30px;
+        font-weight: 700;
+        color: $primary;
+
+        }
+      &__subtitle {
+        font-size: $font-body;
+        padding-bottom: 40px;
+      }
+      .button {
+        margin: 50px auto;
+        text-transform: uppercase;
+        padding: 1.8em 3em;
+        line-height: 0;
+      }
+    }
+  }
+}
