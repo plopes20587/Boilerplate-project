@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var imagemin = require('gulp-imagemin');
-var uglify = require('gulp-uglify');
+//var uglify = require('gulp-uglify');
+var minify = require('gulp-minify');
 var autoprefixer = require('autoprefixer');
 var sass = require('gulp-sass');
 var cssmin = require('gulp-cssmin');
@@ -25,11 +26,24 @@ gulp.task('imageMin', function(){
 
 
 // Minify JS
-gulp.task('scripts', function(){
+// gulp.task('scripts', function(){
+//   gulp.src('src/js/*.js')
+//     .pipe(uglify())
+//     .pipe(gulp.dest('production/js'))
+//     .pipe(reload({stream:true}));
+// });
+ 
+gulp.task('compress', function() {
   gulp.src('src/js/*.js')
-    .pipe(uglify())
+    .pipe(minify({
+        ext:{
+            src:'-debug.js',
+            min:'.js'
+        },
+        exclude: ['tasks'],
+        ignoreFiles: ['.combo.js', '-min.js']
+    }))
     .pipe(gulp.dest('production/js'))
-    .pipe(reload({stream:true}));
 });
 
 // Compile sass
@@ -54,11 +68,11 @@ gulp.task('browserSync', function() {
 });
 
 gulp.task('watch', function(){
-  gulp.watch('src/js/*js', ['scripts'], reload)
+  gulp.watch('src/js/*js', ['compress'], reload)
   gulp.watch('src/img/*', ['imageMin'], reload)
   gulp.watch('src/scss/**/*scss', ['sass'], reload)
   gulp.watch('src/*html', ['copyHtml'], reload)
 });
 
-gulp.task('build', ['imageMin', 'copyHtml', 'scripts', 'sass']);
-gulp.task('default', ['imageMin', 'copyHtml', 'scripts', 'sass', 'browserSync', 'watch']);
+gulp.task('build', ['imageMin', 'copyHtml', 'compress', 'sass']);
+gulp.task('default', ['imageMin', 'copyHtml', 'compress', 'sass', 'browserSync', 'watch']);

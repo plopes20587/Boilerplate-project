@@ -1,0 +1,18 @@
+.arrow {
+   cursor: pointer;
+   position: absolute;
+   top: 50%;
+   width:auto;
+   height:auto;
+   color: #fff;
+   font-size: 5rem;
+   margin-top: -50px;
+  &__left {
+    left: 0;
+    margin-left: 50px;
+   }
+  &__right{
+     right: 0;
+     margin-right: 50px;
+   }
+}
